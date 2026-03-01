@@ -1,0 +1,38 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:18.9.1-ce.0
+    container_name: gitlab
+    hostname: localhost
+    restart: unless-stopped
+    shm_size: '2gb'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://192.168.68.51'
+      GITLAB_ROOT_EMAIL: "sfkwan@yahoo.com"
+      GITLAB_ROOT_PASSWORD: "Abc123!@"
+    ports:
+      - "80:80"
+      # - "443:443"
+      - "22:22"
+    volumes:
+      - ./gitlab/config:/etc/gitlab
+      - ./gitlab/logs:/var/log/gitlab
+      - ./gitlab/data:/var/opt/gitlab
+    networks:
+      - gitlab_net
+
+  gitlab-runner:
+    image: gitlab/gitlab-runner:alpine3.21-v18.9.0
+    container_name: gitlab-runner
+    restart: unless-stopped
+    depends_on:
+      - gitlab
+    volumes:
+      - ./gitlab-runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - gitlab_net
+
+networks:
+  gitlab_net:
+    driver: bridge
