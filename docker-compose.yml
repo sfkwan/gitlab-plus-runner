@@ -1,13 +1,13 @@
 services:
   gitlab:
-    image: gitlab/gitlab-ce:18.9.1-ce.0
+    image: gitlab/gitlab-ce:19.3.1-ce.0
     container_name: gitlab
     hostname: localhost
     restart: unless-stopped
     shm_size: '2gb'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://192.168.68.51'
+        external_url 'http://192.168.68.57'
       GITLAB_ROOT_EMAIL: "sfkwan@yahoo.com"
       GITLAB_ROOT_PASSWORD: "Abc123!@"
     ports:
@@ -22,7 +22,7 @@ services:
       - gitlab_net
 
   gitlab-runner:
-    image: gitlab/gitlab-runner:alpine3.21-v18.9.0
+    image: gitlab/gitlab-runner:alpine3.21-v19.3.1
     container_name: gitlab-runner
     restart: unless-stopped
     depends_on:

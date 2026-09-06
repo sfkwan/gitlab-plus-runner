@@ -4,13 +4,13 @@ Madatory to set up external_url for GitLab runner to register and git clone usin
 
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://192.168.68.51:8080'
+        external_url 'http://192.168.68.57:8080'
 
 ---
 
 # GitLab runner config (config.toml)
 
-http://192.168.68.51:8080/admin/runners
+http://192.168.68.57:8080/admin/runners
 
 ![create instance runner](create-runner-instance.png)
 
@@ -51,7 +51,7 @@ Select Add new key.
 ## Verify SSH connection
 
 ```shell
-ssh -Tv git@192.168.68.51
+ssh -Tv git@192.168.68.57
 ```
 
 ![verify connection](verify-connection.png)

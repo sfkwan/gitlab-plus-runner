@@ -8,7 +8,7 @@ shutdown_timeout = 0
 [[runners]]
   name = "linux"
   request_concurrency = 4
-  url = "http://192.168.68.51:8000"
+  url = "http://192.168.68.57:8000"
   id = 4
   token = "glrt-z-BOjX1PUZekVMb8UHFSAW86MQp0OjEKdToxCw.01.1214e8mzd"
   token_obtained_at = 2026-03-01T05:35:47Z
